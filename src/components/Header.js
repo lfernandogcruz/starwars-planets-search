@@ -1,10 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function Header() {
-  const { data: planets } = useContext(PlanetsContext);
-  const [textInputValue, setTextInputValue] = useState('');
-  const [filteredPlanets, setFilteredPlanets] = useState(planets);
+  const { data: planets,
+    textInputValue, setTextInputValue,
+    setFilteredPlanets } = useContext(PlanetsContext);
+  // const [textInputValue, setTextInputValue] = useState('');
+  // const [filteredPlanets, setFilteredPlanets] = useState(planets);
 
   useEffect(() => {
     // console.log(textInputValue);
@@ -14,20 +16,7 @@ function Header() {
     // console.log(filteredPlanetList);
     setFilteredPlanets(filteredPlanetList);
     // console.log(filteredPlanets);
-  }, [textInputValue, planets]);
-
-  useEffect(() => {
-    console.log(filteredPlanets);
-  }, [filteredPlanets]);
-
-  // const filters = {
-  //   text: '',
-  //   rotation_period: false,
-  //   orbital_period: false,
-  //   diameter: false,
-  //   population: false,
-  //   surface_water: false,
-  // };
+  }, [planets, textInputValue, setFilteredPlanets]);
 
   const handleTextFilter = ({ target }) => {
     // console.log(target.value);

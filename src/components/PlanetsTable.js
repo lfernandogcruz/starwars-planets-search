@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 import useQueryInput from '../hooks/useQueryInput';
 
 function PlanetsTable() {
-  const { data: planets } = useContext(PlanetsContext);
+  const { data: planets, loading, filteredPlanets } = useContext(PlanetsContext);
   // const [inputValue] = useState();
-  const [loading] = useState(false);
+  // const [loading] = useState(false);
 
   const planetsTableHeader = Object.keys(planets[0] || {})
     .filter((key) => key !== 'residents');
@@ -30,7 +30,7 @@ function PlanetsTable() {
       </thead>
       <tbody>
         {
-          planets.map((planet) => (
+          filteredPlanets.map((planet) => (
             <tr key={ planet.name }>
               {
                 planetsTableHeader.map((text) => (

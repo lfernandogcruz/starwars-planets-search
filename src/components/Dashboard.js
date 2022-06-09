@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
+import PlanetsContext from '../context/PlanetsContext';
 
 function Dashboard() {
-  // const { data: planets } = useContext(PlanetsContext);
-  const [filterByNumericValues, setFilterByNumericValues] = useState([]);
+  const { filterByNumericValues, setFilterByNumericValues,
+    filterTags, setFilterTags,
+    numericColumnValue, setnumericColumnValue,
+    numericComparisonValue, setnumericComparisonValue,
+    numericInputValue, setNumericInputValue } = useContext(PlanetsContext);
+  // const [filterByNumericValues, setFilterByNumericValues] = useState([]);
 
-  const initialFilterTags = {
-    population: true,
-    orbital_period: true,
-    diameter: true,
-    rotation_period: true,
-    surface_water: true,
-  };
+  // const initialFilterTags = {
+  //   population: true,
+  //   orbital_period: true,
+  //   diameter: true,
+  //   rotation_period: true,
+  //   surface_water: true,
+  // };
 
-  const [filterTags, setFilterTags] = useState(initialFilterTags);
-  const [numericColumnValue, setnumericColumnValue] = useState('population');
-  const [numericComparisonValue, setnumericComparisonValue] = useState('maior que');
-  const [numericInputValue, setNumericInputValue] = useState(0);
+  // const [filterTags, setFilterTags] = useState(initialFilterTags);
+  // const [numericColumnValue, setnumericColumnValue] = useState('population');
+  // const [numericComparisonValue, setnumericComparisonValue] = useState('maior que');
+  // const [numericInputValue, setNumericInputValue] = useState(0);
 
   useEffect(() => {
     setNumericInputValue(0);
-  }, [filterByNumericValues]);
+  }, [filterByNumericValues, setNumericInputValue]);
 
   const handleFilterBtn = ({ target }) => {
     // console.log(target);
@@ -86,7 +91,7 @@ function Dashboard() {
         <form className="sort-order">
           <select id="column-sort" data-testid="column-sort">
             {
-              Object.keys(initialFilterTags).map((tag) => renderOptions(tag))
+              Object.keys(filterTags).map((tag) => renderOptions(tag))
             }
           </select>
           <label htmlFor="ascending">
