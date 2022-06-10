@@ -18,9 +18,22 @@ function PlanetsProvider({ children }) {
   };
 
   const [filterTags, setFilterTags] = useState(initialFilterTags);
-  const [numericColumnValue, setnumericColumnValue] = useState('population');
-  const [numericComparisonValue, setnumericComparisonValue] = useState('maior que');
-  const [numericInputValue, setNumericInputValue] = useState(0);
+  // const [numericColumnValue, setnumericColumnValue] = useState('population');
+  // const [numericComparisonValue, setnumericComparisonValue] = useState('maior que');
+  // const [numericInputValue, setNumericInputValue] = useState(0);
+  const [finalPlanetList, setFinalPlanetList] = useState(filteredPlanets);
+
+  const initialSorting = {
+    name: true,
+    population: false,
+    orbital_period: false,
+    diameter: false,
+    rotation_period: false,
+    surface_water: false,
+  };
+  const [sorting, setSorting] = useState(initialSorting);
+  const [sortedPlanetList, setSortedPlanetList] = useState(finalPlanetList);
+  const [sortingColumn, setSortingColumn] = useState('population');
 
   useEffect(() => {
     const fetchPlanets = async () => {
@@ -50,12 +63,20 @@ function PlanetsProvider({ children }) {
     setFilterByNumericValues,
     filterTags,
     setFilterTags,
-    numericColumnValue,
-    setnumericColumnValue,
-    numericComparisonValue,
-    setnumericComparisonValue,
-    numericInputValue,
-    setNumericInputValue,
+    // numericColumnValue,
+    // setnumericColumnValue,
+    // numericComparisonValue,
+    // setnumericComparisonValue,
+    // numericInputValue,
+    // setNumericInputValue,
+    finalPlanetList,
+    setFinalPlanetList,
+    sorting,
+    setSorting,
+    sortedPlanetList,
+    setSortedPlanetList,
+    sortingColumn,
+    setSortingColumn,
   };
 
   return (
