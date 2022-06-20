@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
+import './Header.css';
 
 function Header() {
   const { data: planets,
@@ -24,7 +25,7 @@ function Header() {
   };
 
   return (
-    <header>
+    <header className="header-tag">
       <h1>Star Wars Galactical Census</h1>
       <input
         type="text"

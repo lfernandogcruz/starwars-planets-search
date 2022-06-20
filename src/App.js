@@ -9,9 +9,11 @@ function App() {
   // ooopsie!
   return (
     <PlanetsProvider>
-      <Header />
-      <Dashboard />
-      <PlanetsTable />
+      <div className="App">
+        <Header />
+        <Dashboard />
+        <PlanetsTable />
+      </div>
     </PlanetsProvider>
   );
 }

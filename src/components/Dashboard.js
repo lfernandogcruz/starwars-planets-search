@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
+import './Dashboard.css';
+
+const MINUS_ONE = -1;
 
 function Dashboard() {
   const { filterByNumericValues, setFilterByNumericValues,
     filterTags, setFilterTags, sorting, setSorting,
-    sortingColumn, setSortingColumn,
+    sortingColumn, setSortingColumn, finalPlanetList, setFinalPlanetList,
     // numericColumnValue, setnumericColumnValue,
     // numericComparisonValue, setnumericComparisonValue,
     // numericInputValue, setNumericInputValue
@@ -87,6 +90,17 @@ function Dashboard() {
         setSorting({ ...sorting, [sorter]: false });
       }
     });
+    const sortedListWithOUTUnknown = finalPlanetList
+      .filter((planet) => planet[column] !== 'unknown')
+      .sort((a, b) => {
+        if (a[column] > b[column]) return 1;
+        if (a[column] < b[column]) return MINUS_ONE;
+        return 0;
+      });
+    const sortedListONLYUnknown = finalPlanetList
+      .filter((planet) => planet[column] === 'unknown');
+    const sortedListFinal = [...sortedListWithOUTUnknown, ...sortedListONLYUnknown];
+    setFinalPlanetList(sortedListFinal);
     // setSorting(resetSorting);
     // setSortReseted(true);
   };
@@ -100,7 +114,7 @@ function Dashboard() {
 
   return (
     <>
-      <div>
+      <div className="dashboard">
         <form className="numeric-filter">
           <select
             id="column-filter"

@@ -1,0 +1,26 @@
+.table {
+  background-color: black;
+  border: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.thead-cell {
+  border: 1px solid white;
+}
+
+.thead {
+  background-color: black;
+  color: rgb(199, 199, 199);
+  font-family: Roboto , sans-serif;
+  font-size: 16px;
+}
+
+.tbody {
+  background-color: rgb(88, 88, 88);
+  color: rgb(199, 199, 199);
+  font-family: Roboto , sans-serif;
+  font-size: 16px;
+}

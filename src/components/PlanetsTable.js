@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
+import './PlanetsTable.css';
 // import useQueryInput from '../hooks/useQueryInput';
 
 const MINUS_ONE = -1;
@@ -52,9 +53,9 @@ function PlanetsTable() {
     );
   }
   return (
-    <table>
-      <thead>
-        <tr>
+    <table className="table">
+      <thead className="thead">
+        <tr className="thead-cell">
           {
             planetsTableHeader.map((column) => (
               <th key={ column }>{ column }</th>
@@ -62,7 +63,7 @@ function PlanetsTable() {
           }
         </tr>
       </thead>
-      <tbody>
+      <tbody className="tbody">
         {
           sortedPlanetList.map((planet) => (
             <tr key={ planet.name }>
