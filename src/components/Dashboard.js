@@ -32,6 +32,13 @@ function Dashboard() {
     setnumericColumnValue(Object.keys(filterTags).find((key) => filterTags[key]));
   }, [filterTags, setnumericColumnValue]);
 
+  const handleExcludeFilter = (filter) => {
+    const filteredMinusFilter = filterByNumericValues
+      .filter((it) => it.column !== filter);
+    setFilterTags({ ...filterTags, [filter]: true });
+    setFilterByNumericValues(filteredMinusFilter);
+  };
+
   const handleFilterBtn = () => {
     // console.log(target);
     // console.log(target.form);
@@ -186,7 +193,7 @@ function Dashboard() {
               </p>
               <button
                 type="button"
-                onClick={ () => console.log('clicked') }
+                onClick={ () => handleExcludeFilter(filter.column) }
               >
                 X
               </button>

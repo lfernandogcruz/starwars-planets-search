@@ -30,15 +30,15 @@ function PlanetsTable() {
   useEffect(() => {
     // console.log(filterByNumericValues);
     // console.log(filterTags);
-    const finalList = Object.keys(filterByNumericValues)
+    const finalList = filterByNumericValues
       .reduce((acc, filter) => acc.filter((planet) => {
         switch (filter.comparison) {
         case 'maior que':
-          return planet[filter.column] > Number(filter.value);
+          return Number(planet[filter.column]) > Number(filter.value);
         case 'menor que':
-          return planet[filter.column] < Number(filter.value);
+          return Number(planet[filter.column]) < Number(filter.value);
         case 'igual a':
-          return planet[filter.column] === Number(filter.value);
+          return Number(planet[filter.column]) === Number(filter.value);
         default:
           return true;
         }
